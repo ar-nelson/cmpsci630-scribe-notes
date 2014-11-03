@@ -13,8 +13,8 @@ PCM – Phase Change Memory
 Here the state depends on the crystals. Heat causes crystal to change state. Heat it, it stays in the state until you heat it again.
 
 DVD/ CD
--	DVD is optical which is supposedly slow. Its less dense and an inexpensive disk. 
--	Velocity is around 1000 times less than the magnetic media.
+- DVD is optical which is supposedly slow. Its less dense and an inexpensive disk. 
+- Velocity is around 1000 times less than the magnetic media.
 
 Magnetic media has two sides and are usually vacuum – sealed.  If vacuum seal is broken, disk is dead. But vacuum seal is very sensitive, even if there were dust particles on them, it was impossible to read data. Magnetic has very bandwidth, it speed goes upto 10,000 RPM. When things are rotating very fast, we are able to read lot of data from the disk. But the drawback is magnetic media have high latency when compared to NVRAM.
 
@@ -23,8 +23,8 @@ Why did Google move from magnetic disks to SSD’s?
   Rotator consumes a lot of power
   Hard drive – 10W 
   SSD 	- mW
-
--	Predictable wear
+  
+- Predictable wear
   Flash has higher life cycle, since it is being used in a dense way.
   Flash goes for load leveling:	
   -	Flash maintains another level of indirection, maintains bad blocks.

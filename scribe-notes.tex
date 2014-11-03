@@ -111,8 +111,40 @@
 %\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
 \lecture{16}{October 30}{Emery Berger}{Adam Nelson, Seema Guggari}
 
-\section{Section}
+\section{Spinning Disks}
 
-lorem ipsum dolor sit amet
+People have been talking about the end of disks for a long time, but we still have disks today. Most hard drives (\textit{spinning media}) are spinning \textit{magnetic disks}, which store data in concentric rings of bits. The data is read and written by a moving \textit{head}, which can be magnetized to write bits.
+
+Hard drives have moving parts, which makes them unreliable and slow. In order to read data from a different ``ring'' than the one the head is currently on, the head must physically move; the delay that this causes is called \textit{seek latency}. Even if data is on the same ring, the system must still wait for the disk to spin around to the location of the data; this is called \textit{rotation latency}.
+
+Throughput for reading a single large file from a spinning disk is very high---higher than almost any other storage medium---but only if the file is \textit{contiguous} (not broken up into pieces). Reading a file composed of pieces spread across multiple rings can result in massive seek latency. To combat this, older operating systems would often perform \textit{defragmentation} to keep files contiguous. Defragmentation is not used much today, likely because, as hard drives become larger, there is less reason to break up files in the first place.
+
+Modern high-density hard drives are extremely precise and fragile. They often consist of several disks stacked on top of each other, spinning at up to 10,000 RPM, each with its own head, which moves as fast as possible without damaging the disk surface. The drives must be vacuum-sealed, as even a single smoke particle would be large enough to block a disk head and corrupt data. If the vacuum seal is broken, the disk is dead.
+
+Optical media (CDs and DVDs) is another form of spinning media: it is more durable than magnetic media, but is also slower. Optical media uses a laser to read etched grooves in a disk; early CD burners literally burned grooves in disks using higher-powered lasers. Optical disks cannot spin as fast as magnetic disks without deforming or breaking; CD drives are often described with speeds like ``24X'', but, to compare to an average hard drive, a CD drive would need a speed of about \emph{1,000X}.
+
+\section{Solid State Drives and NVRAM}
+
+Spinning media has high throughput, but also has latency and reliability issues; as a result, many users, including large corporations like Google, are moving to solid-state drives. In fact, Google recently replaced all of the hard drives in its data centers with SSDs. Why is that?
+
+\begin{itemize}
+  \item Power savings: Spinning a disk consumes a lot of power. Hard drives use about 10W of power, while SSDs use on the order of milliwatts.
+  \item Reduced latency: SSDs have O(1) random access. No seek latency or rotation latency.
+  \item Predictable wear: Each block of flash memory can be written a fixed number of times. There are no moving parts to break randomly.
+  \item Reduced heat output: No moving parts.
+  \item Reduced manpower: SSDs need to be replaced less, which saves money on maintenance work.
+\end{itemize}
+
+SSDs belong to a family of storage hardware known as NVRAM (non-volatile RAM). Ordinary RAM must have power applied at a specific frequency (\textit{clock rate}) in order to preserve its data, but NVRAM can maintain data without power. SSDs use \textit{flash memory}, a kind of NVRAM that is split up into large (several KB) \textit{blocks} which can be rewritten by applying voltage to them. Reading from flash memory is fast; writing is somewhat slower, because the entire contents of a block must be rewritten at the same time, even if only a few bytes were changed.
+
+Other kinds of NVRAM include phase-change memory (PCM), which is similar to optical media, using heat to change the state of crystals to store data; and memristers (mentioned but not described in the lecture).
+
+NVRAM does have one major downside: price. SSDs are roughly 4 times the cost-per-GB of traditional spinning hard disks. Nonetheless, in large-scale environments such as Google datacenters, or in specialized hardware such as mobile devices (which require drives that can take a beating and conserve power), SSDs can be more cost-efficient in the long term.
+
+\section{Reliability}
+
+% (burn-in, journaling)
+
+\section{RAID}
 
 \end{document}

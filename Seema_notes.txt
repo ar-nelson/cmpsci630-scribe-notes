@@ -1,9 +1,9 @@
 RAID and Disks
 Disks are technically referred to as spinning media where as flash is not the rotating media.
 Types of NVRAM technology:
-1.	SSD or Flash
-2.	PCM – Phase Change Memory
-3.	DVD/CD
+1. SSD or Flash
+2. PCM – Phase Change Memory
+3. DVD/CD
 
 SSD (Solid State Disks )
 Flash or SSD are not having the rotating medium, they have random access and have a non volatile RAM (NVRAM).

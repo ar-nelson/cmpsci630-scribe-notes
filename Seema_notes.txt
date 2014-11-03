@@ -19,7 +19,7 @@ DVD/ CD
 Magnetic media has two sides and are usually vacuum – sealed.  If vacuum seal is broken, disk is dead. But vacuum seal is very sensitive, even if there were dust particles on them, it was impossible to read data. Magnetic has very bandwidth, it speed goes upto 10,000 RPM. When things are rotating very fast, we are able to read lot of data from the disk. But the drawback is magnetic media have high latency when compared to NVRAM.
 
 Why did Google move from magnetic disks to SSD’s?
--	Power savings
+- Power savings
   Rotator consumes a lot of power
   Hard drive – 10W 
   SSD 	- mW
@@ -30,17 +30,16 @@ Why did Google move from magnetic disks to SSD’s?
   -	Flash maintains another level of indirection, maintains bad blocks.
   -	It keeps a check of what has been written maximum number of times. Thus spreads the writes throughout the disk.
 
--	Data access speed
+- Data access speed
 
--	No need of a fan 
+- No need of a fan 
   Since no heat is dissipitated by SSD
 
--	Less use of man power.
+- Less use of man power.
   Since SSD is more reliable. It has no moving parts and hence more reliability. No need of frequently replacing disks, hence less number of people to replace disks.
 
--	Only drawback is SSD’s are expensive.
+- Only drawback is SSD’s are expensive.
   Cost is around 4 times that of magnetic disks.
-
 
 A hard drive is a stack of spinning discs, each of which has concentric rings of bits. The magnetic disk arm moves disk head back and forth to access data. The disk head should move really fast to access data. Thus magnetic disk head builds up speed and also has to reduce latency to land to a particular place. This is known as seek latency. This slows down random access. Random access is also slowed by waiting for the disk to spin around also known as rotation latency. To reduce this latency, we need a contiguous layout. Defragmentation helps in maintaining this contiguous layout. In case of NTFS, there is no defragmentation. Hence there was a compaction overhead when the disk was completely full. Best possible thing was to copy data from one disk to the other. But this again employs copying overhead. Thus we go for terabyte hard drive. It’s difficult to fill terabyte hard drives, thus easier to compact and hence easier to have a contiguous layout.
 
@@ -56,29 +55,29 @@ Journaling.
 In case of journaling, we keep a log of all the actions completed. If case of a power failure in between, the disk might be corrupted. In this case, we check the last entry in the log. If it is not the end of a complete action, we undo all the changes written in log to the beginning of the action.
 Journal can also be corrupted since it is stored on disk. To protect journals, one should go for replicating journals.
 Proof of replication through Probability:
--	P(disk write fails) = p
--	P(disk write succeeds) = 1-p
+- P(disk write fails) = p
+- P(disk write succeeds) = 1-p
 
--	P(disk write fails for two disks) = p * p = p^2
--	P(disk writes succeeds for two disks) = 1- p^2
+- P(disk write fails for two disks) = p * p = p^2
+- P(disk writes succeeds for two disks) = 1- p^2
 Hence, more the number of disks, success rate if higher. Here the assumption is that all the disks are independent of each other.
 
 RAID which used to mean "Redundant Array of Inexpensive Disks," now means "Redundant Array of Independent Disks".  For fault tolerance, disks should be independent.
 RAID has two purposes:
--	Performance
--	Reliability
+- Performance
+- Reliability
 
 These are achieved by
--	Mirroring (RAID 0) – same data being replicated on multiple blocks
+- Mirroring (RAID 0) – same data being replicated on multiple blocks
   Best reliability/ worst performance/cost
   
--	Striping (RAID 1) -  different blocks have different data
+- Striping (RAID 1) -  different blocks have different data
   Best performance /cost worst reliability
 
 In case of 3 disks, success rate would be as follows :
--	Mirroring 
+- Mirroring 
   Success rate = 1-p^3
--	Striping
+- Striping
   Success rate = (1-p)^3
 
 Hence optimal solution is to combine both mirroring and striping. And the only way to recover from failures is to make “BACKUPS”.
